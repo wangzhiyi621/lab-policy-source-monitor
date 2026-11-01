@@ -30,6 +30,7 @@ class PublicFeedTests(unittest.TestCase):
                 self.assertEqual(checker.main(), 1)
             feed = json.loads(output.read_text())
             self.assertFalse(feed["runSuccess"])
+            self.assertEqual(feed["trigger"], "manual")
             self.assertIsNone(feed["newCount"])
             self.assertEqual(feed["relevantItems"], [{**lead, "observedOn": "2026-10-01T10:00:00+08:00"}])
             self.assertEqual(json.loads(history.read_text())["entries"][0]["result"], "failed")
@@ -56,6 +57,7 @@ class PublicFeedTests(unittest.TestCase):
                 self.assertEqual(checker.main(), 0)
             feed = json.loads(output.read_text())
             self.assertEqual(feed["newCount"], 1)
+            self.assertEqual(feed["trigger"], "manual")
             self.assertEqual([item["url"] for item in feed["newItems"]], ["https://www.nhsa.gov.cn/example-new"])
             self.assertEqual(next(item for item in feed["relevantItems"] if item["url"] == old["url"])["observedOn"], "2026-10-01T10:00:00+08:00")
 
