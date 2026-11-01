@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -97,6 +98,7 @@ def write_results(snapshot: dict) -> None:
     states = snapshot["sources"]
     entry = {
         "checkedOn": snapshot["checkedOn"],
+        "trigger": snapshot["trigger"],
         "result": "failed" if not snapshot["runSuccess"] else "complete" if all(item["state"] == "success" for item in states) else "partial",
         "newLinkCount": snapshot["newCount"],
         "versionCandidateCount": len(snapshot["versionCandidates"]),
@@ -114,6 +116,7 @@ def main() -> int:
     if previous and "establishedSources" not in previous:
         established_sources = {item["name"] for item in previous.get("sources", []) if item["state"] == "success"}
     checked_on = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
+    trigger = "scheduled" if os.environ.get("POLICY_CHECK_TRIGGER") == "schedule" else "manual"
     samr_urls = [SAMR_SEARCH if number == 1 else f"{SAMR_SEARCH}&pageNo={number}" for number in range(1, 4)]
     # Official sites can time out independently. Read them concurrently so one
     # unavailable directory does not hold the whole weekly check for minutes.
@@ -121,10 +124,10 @@ def main() -> int:
         source_pages = {url: pool.submit(fetch, url) for _, url in SOURCES}
         announcement_page = pool.submit(fetch_nhc_announcements)
         samr_pages = {url: pool.submit(fetch, url) for url in samr_urls}
-        return compile_snapshot(previous, known, established_sources, checked_on, source_pages, announcement_page, samr_pages, samr_urls)
+        return compile_snapshot(previous, known, established_sources, checked_on, trigger, source_pages, announcement_page, samr_pages, samr_urls)
 
 
-def compile_snapshot(previous, known, established_sources, checked_on, source_pages, announcement_page, samr_pages, samr_urls) -> int:
+def compile_snapshot(previous, known, established_sources, checked_on, trigger, source_pages, announcement_page, samr_pages, samr_urls) -> int:
     all_records: dict[str, dict[str, str]] = {}
     statuses = []
     for name, url in SOURCES:
@@ -169,7 +172,7 @@ def compile_snapshot(previous, known, established_sources, checked_on, source_pa
     run_success = any(item["state"] in ("success", "partial") for item in statuses)
     if not run_success:
         snapshot = {
-            "checkedOn": checked_on, "mode": "github-scheduled", "baseline": previous is None,
+            "checkedOn": checked_on, "mode": "github-scheduled", "trigger": trigger, "baseline": previous is None,
             "runSuccess": False,
             "newSourceBaselines": [],
             "establishedSources": sorted(established_sources),
@@ -214,6 +217,7 @@ def compile_snapshot(previous, known, established_sources, checked_on, source_pa
     snapshot = {
         "checkedOn": checked_on,
         "mode": "github-scheduled",
+        "trigger": trigger,
         "baseline": previous is None,
         "runSuccess": True,
         "newSourceBaselines": new_source_baselines,
