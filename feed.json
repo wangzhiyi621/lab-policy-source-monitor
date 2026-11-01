@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-11-01T20:58:18+08:00",
+  "checkedOn": "2026-11-01T21:42:05+08:00",
   "mode": "github-scheduled",
   "baseline": false,
   "runSuccess": true,
@@ -15,16 +15,16 @@
     {
       "name": "国家医保局 · 立项指南",
       "url": "https://www.nhsa.gov.cn/col/col201/index.html",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：URLError；不能据此判断无更新"
+      "state": "success",
+      "count": 41,
+      "detail": "仅检查当前目录响应"
     },
     {
       "name": "国家医保局 · 政策解读",
       "url": "https://www.nhsa.gov.cn/col/col202/index.html",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：URLError；不能据此判断无更新"
+      "state": "success",
+      "count": 19,
+      "detail": "仅检查当前目录响应"
     },
     {
       "name": "国家医保局 · 医保动态",
@@ -51,7 +51,7 @@
       "name": "全国标准信息公共服务平台 · WS/T近期检索",
       "url": "https://std.samr.gov.cn/search/stdPage?q=WS%2FT&tid=",
       "state": "success",
-      "count": 30,
+      "count": 25,
       "detail": "检索页 3/3；仅作标准元数据线索"
     }
   ],
@@ -61,6 +61,14 @@
       "url": "https://www.nhsa.gov.cn/art/2026/10/2/art_14_22903.html",
       "published": "2026-10-02",
       "directory": "国家医保局 · 医保动态",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "各地密集发布立项指南对接落地映射关系",
+      "url": "https://www.nhsa.gov.cn/art/2026/6/26/art_14_21122.html",
+      "published": "2026-07-01",
+      "directory": "国家医保局 · 立项指南",
       "code": "",
       "effective": ""
     },
@@ -89,36 +97,92 @@
       "code": "WS/T 404.9-2026"
     },
     {
-      "title": "临床常用免疫学检验项目参考区间第2部分：血清甲胎蛋白、癌胚抗原、糖链抗原19-9、糖链抗原15-3、糖链抗原125",
-      "url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=58FED2B32E45886BE06397BE0A0A5BB3",
-      "published": "2026-05-25",
-      "effective": "2026-11-01",
-      "directory": "全国标准信息公共服务平台 · WS/T近期检索",
-      "code": "WS/T 645.2-2026"
+      "title": "医疗服务价格项目立项指南解读辅导（第12期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/5/7/art_202_20417.html",
+      "published": "2026-05-07",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
     },
     {
-      "title": "临床常用免疫学检验项目参考区间第1部分：血清免疫球蛋白G、免疫球蛋白A、免疫球蛋白M、补体3、补体4",
-      "url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=58FED2B32E44886BE06397BE0A0A5BB3",
-      "published": "2026-05-25",
-      "effective": "2026-11-01",
-      "directory": "全国标准信息公共服务平台 · WS/T近期检索",
-      "code": "WS/T 645.1-2026"
+      "title": "医疗服务价格项目立项指南解读辅导（第11期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/5/7/art_202_20416.html",
+      "published": "2026-05-07",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
     },
     {
-      "title": "临床检验定量测定室内质量控制标准",
-      "url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=58FED2B32E43886BE06397BE0A0A5BB3",
-      "published": "2026-05-25",
-      "effective": "2026-11-01",
-      "directory": "全国标准信息公共服务平台 · WS/T近期检索",
-      "code": "WS/T 641-2026"
+      "title": "医疗服务价格项目立项指南解读辅导（第10期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19740.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
     },
     {
-      "title": "临床微生物学检验标本的采集和转运标准",
-      "url": "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=58FED2B32E42886BE06397BE0A0A5BB3",
-      "published": "2026-05-25",
-      "effective": "2026-11-01",
-      "directory": "全国标准信息公共服务平台 · WS/T近期检索",
-      "code": "WS/T 640-2026"
+      "title": "医疗服务价格项目立项指南解读辅导（第9期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19739.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "医疗服务价格项目立项指南解读辅导（第8期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19738.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "医疗服务价格项目立项指南解读辅导（第7期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19737.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "医疗服务价格项目立项指南解读辅导（第6期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19736.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "医疗服务价格项目立项指南解读辅导（第5期）",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19735.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 政策解读",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "《药学类医疗服务价格项目立项指南（试行）》",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/11/art_14_19656.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 立项指南",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "《一般治疗类医疗服务价格项目立项指南（试行）》",
+      "url": "https://www.nhsa.gov.cn/art/2026/2/11/art_14_19654.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 立项指南",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "《手术和治疗辅助操作类医疗服务价格项目立项指南（试行）》",
+      "url": "https://www.nhsa.gov.cn/art/2026/1/20/art_14_19431.html",
+      "published": "2026-02-26",
+      "directory": "国家医保局 · 立项指南",
+      "code": "",
+      "effective": ""
     }
   ],
   "announcementItems": [],
