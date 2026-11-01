@@ -1,0 +1,49 @@
+name: 检查公开政策目录
+
+on:
+  schedule:
+    - cron: '37 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: policy-source-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 检查解析与失败保留逻辑
+        run: python -m unittest -v test_check_sources.py
+      - name: 检查来源
+        id: scan
+        shell: bash
+        run: |
+          set +e
+          python check_sources.py
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: 保存公开目录元数据
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- feed.json history.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update public policy directory check'
+            git push
+          fi
+      - name: 标记全来源失败
+        if: steps.scan.outputs.exit_code != '0'
+        run: |
+          echo '所有已配置来源读取失败；失败记录已保存，不代表无新政策。' >> "$GITHUB_STEP_SUMMARY"
+          exit 1
