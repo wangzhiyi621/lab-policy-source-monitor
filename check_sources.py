@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from html import unescape
 from pathlib import Path
@@ -115,9 +116,22 @@ def main() -> int:
     checked_on = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
     all_records: dict[str, dict[str, str]] = {}
     statuses = []
+    samr_urls = [SAMR_SEARCH if number == 1 else f"{SAMR_SEARCH}&pageNo={number}" for number in range(1, 4)]
+    # Official sites can time out independently. Read them concurrently so one
+    # unavailable directory does not hold the whole weekly check for minutes.
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        source_pages = {url: pool.submit(fetch, url) for _, url in SOURCES}
+        announcement_page = pool.submit(fetch_nhc_announcements)
+        samr_pages = {url: pool.submit(fetch, url) for url in samr_urls}
+        return compile_snapshot(previous, known, established_sources, checked_on, source_pages, announcement_page, samr_pages, samr_urls)
+
+
+def compile_snapshot(previous, known, established_sources, checked_on, source_pages, announcement_page, samr_pages, samr_urls) -> int:
+    all_records: dict[str, dict[str, str]] = {}
+    statuses = []
     for name, url in SOURCES:
         try:
-            page = fetch(url)
+            page = source_pages[url].result()
             records = parse_records(page, url, name) if "nhsa.gov.cn" in url else []
             if "nhsa.gov.cn" in url and not records:
                 raise ValueError("页面可访问，但目录条目无法解析")
@@ -129,7 +143,7 @@ def main() -> int:
             statuses.append({"name": name, "url": url, "state": "failed", "count": 0, "detail": f"读取失败：{code}；不能据此判断无更新"})
     nhc_announcements = []
     try:
-        nhc_announcements = parse_nhc_announcements(fetch_nhc_announcements())
+        nhc_announcements = parse_nhc_announcements(announcement_page.result())
         if not nhc_announcements:
             raise ValueError("公告列表可访问，但条目无法解析")
         statuses.append({"name": NHC_ANNOUNCEMENTS_NAME, "url": NHC_ANNOUNCEMENTS, "state": "success", "count": len(nhc_announcements), "detail": "仅检查最新公告列表第一页；替代关系仍需打开正文核对"})
@@ -141,10 +155,9 @@ def main() -> int:
     samr_records = []
     samr_pages_read = 0
     samr_errors = []
-    for page_number in range(1, 4):
-        page_url = SAMR_SEARCH if page_number == 1 else f"{SAMR_SEARCH}&pageNo={page_number}"
+    for page_number, page_url in enumerate(samr_urls, start=1):
         try:
-            parsed = parse_samr(fetch(page_url))
+            parsed = parse_samr(samr_pages[page_url].result())
             if not parsed:
                 raise ValueError("标准条目无法解析")
             samr_records.extend(parsed)
