@@ -1,14 +1,9 @@
 {
-  "checkedOn": "2026-11-01T20:53:04+08:00",
+  "checkedOn": "2026-11-01T20:58:18+08:00",
   "mode": "github-scheduled",
-  "baseline": true,
+  "baseline": false,
   "runSuccess": true,
-  "newSourceBaselines": [
-    "国家医保局 · 立项指南",
-    "国家医保局 · 政策解读",
-    "国家医保局 · 医保动态",
-    "全国标准信息公共服务平台 · WS/T近期检索"
-  ],
+  "newSourceBaselines": [],
   "establishedSources": [
     "全国标准信息公共服务平台 · WS/T近期检索",
     "国家医保局 · 医保动态",
@@ -20,16 +15,16 @@
     {
       "name": "国家医保局 · 立项指南",
       "url": "https://www.nhsa.gov.cn/col/col201/index.html",
-      "state": "success",
-      "count": 41,
-      "detail": "仅检查当前目录响应"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：URLError；不能据此判断无更新"
     },
     {
       "name": "国家医保局 · 政策解读",
       "url": "https://www.nhsa.gov.cn/col/col202/index.html",
-      "state": "success",
-      "count": 19,
-      "detail": "仅检查当前目录响应"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：URLError；不能据此判断无更新"
     },
     {
       "name": "国家医保局 · 医保动态",
@@ -66,14 +61,6 @@
       "url": "https://www.nhsa.gov.cn/art/2026/10/2/art_14_22903.html",
       "published": "2026-10-02",
       "directory": "国家医保局 · 医保动态",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "各地密集发布立项指南对接落地映射关系",
-      "url": "https://www.nhsa.gov.cn/art/2026/6/26/art_14_21122.html",
-      "published": "2026-07-01",
-      "directory": "国家医保局 · 立项指南",
       "code": "",
       "effective": ""
     },
@@ -132,62 +119,6 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 640-2026"
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第12期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/5/7/art_202_20417.html",
-      "published": "2026-05-07",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第11期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/5/7/art_202_20416.html",
-      "published": "2026-05-07",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第10期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19740.html",
-      "published": "2026-02-26",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第9期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19739.html",
-      "published": "2026-02-26",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第8期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19738.html",
-      "published": "2026-02-26",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第7期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19737.html",
-      "published": "2026-02-26",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
-    },
-    {
-      "title": "医疗服务价格项目立项指南解读辅导（第6期）",
-      "url": "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19736.html",
-      "published": "2026-02-26",
-      "directory": "国家医保局 · 政策解读",
-      "code": "",
-      "effective": ""
     }
   ],
   "announcementItems": [],
