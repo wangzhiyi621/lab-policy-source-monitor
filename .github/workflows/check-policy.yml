@@ -26,6 +26,8 @@ jobs:
       - name: 检查来源
         id: scan
         shell: bash
+        env:
+          POLICY_CHECK_TRIGGER: ${{ github.event_name }}
         run: |
           set +e
           python check_sources.py
