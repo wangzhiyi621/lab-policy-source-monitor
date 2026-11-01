@@ -114,8 +114,6 @@ def main() -> int:
     if previous and "establishedSources" not in previous:
         established_sources = {item["name"] for item in previous.get("sources", []) if item["state"] == "success"}
     checked_on = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
-    all_records: dict[str, dict[str, str]] = {}
-    statuses = []
     samr_urls = [SAMR_SEARCH if number == 1 else f"{SAMR_SEARCH}&pageNo={number}" for number in range(1, 4)]
     # Official sites can time out independently. Read them concurrently so one
     # unavailable directory does not hold the whole weekly check for minutes.
@@ -177,7 +175,11 @@ def compile_snapshot(previous, known, established_sources, checked_on, source_pa
             "establishedSources": sorted(established_sources),
             "scope": "本次没有成功读取任何官方目录，无法判断是否有更新；保留上次线索仅供回看",
             "sources": statuses,
-            "relevantItems": previous.get("relevantItems", []) if previous else [],
+            "relevantItems": [
+                {**item, "observedOn": item.get("observedOn", previous.get("relevantItemsCheckedOn", previous.get("checkedOn", "")))}
+                for item in previous.get("relevantItems", [])
+            ] if previous else [],
+            "relevantItemsCheckedOn": previous.get("relevantItemsCheckedOn", previous.get("checkedOn", "")) if previous else "",
             "announcementItems": previous.get("announcementItems", []) if previous else [],
             "announcementItemsCheckedOn": previous.get("announcementItemsCheckedOn", previous.get("checkedOn", "")) if previous else "",
             "versionCandidates": previous.get("versionCandidates", []) if previous else [],
@@ -187,13 +189,26 @@ def compile_snapshot(previous, known, established_sources, checked_on, source_pa
         write_results(snapshot)
         print("No official directory was parsed; failure snapshot written.", file=sys.stderr)
         return 1
-    relevant = sorted((item for item in all_records.values() if any(word in item["title"] for word in KEYWORDS)), key=lambda item: (item["published"], item["url"]), reverse=True)
+    current_relevant = [item for item in all_records.values() if any(word in item["title"] for word in KEYWORDS)]
+    readable_sources = {item["name"] for item in statuses if item["state"] in ("success", "partial")}
+    # Keep old leads only for directories that could not be read this week.
+    # The feed marks their last successful observation instead of presenting
+    # them as current results. New-link counts still use this run only.
+    retained = [
+        {**item, "observedOn": item.get("observedOn", previous.get("relevantItemsCheckedOn", previous.get("checkedOn", "")))}
+        for item in previous.get("relevantItems", [])
+        if item.get("directory") not in readable_sources
+    ] if previous else []
+    relevant = sorted(
+        {item["url"]: item for item in [*retained, *[{**item, "observedOn": checked_on} for item in current_relevant]]}.values(),
+        key=lambda item: (item["published"], item["url"]), reverse=True,
+    )
     # The public repository has no hospital or local standards inventory.
     # Matching a newer year to a locally held PDF belongs in the private site.
     version_candidates = []
     version_candidates_complete_on = ""
     new_source_baselines = [item["name"] for item in statuses if item["state"] == "success" and item["name"] not in established_sources]
-    new = list({item["url"]: item for item in [*relevant, *nhc_announcements] if previous and item["directory"] in established_sources and item["url"] not in known}.values())
+    new = list({item["url"]: item for item in [*current_relevant, *nhc_announcements] if previous and item["directory"] in established_sources and item["url"] not in known}.values())
     established_sources.update(new_source_baselines)
     announcement_success = any(item["name"] == NHC_ANNOUNCEMENTS_NAME and item["state"] == "success" for item in statuses)
     snapshot = {
@@ -206,6 +221,7 @@ def compile_snapshot(previous, known, established_sources, checked_on, source_pa
         "scope": "仅已列目录响应中的标题、日期和链接；目录可能延迟或缺项，关键词匹配不是政策适用性判断",
         "sources": statuses,
         "relevantItems": relevant[:16],
+        "relevantItemsCheckedOn": checked_on,
         "announcementItems": nhc_announcements if announcement_success else previous.get("announcementItems", []) if previous else [],
         "announcementItemsCheckedOn": checked_on if announcement_success else previous.get("announcementItemsCheckedOn", previous.get("checkedOn", "")) if previous else "",
         "versionCandidates": version_candidates,
