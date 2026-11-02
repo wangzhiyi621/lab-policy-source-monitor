@@ -1,12 +1,15 @@
 {
-  "checkedOn": "2026-11-01T23:15:37+08:00",
+  "checkedOn": "2026-11-02T11:26:41+08:00",
   "mode": "github-scheduled",
-  "trigger": "manual",
+  "trigger": "scheduled",
   "baseline": false,
   "runSuccess": true,
-  "newSourceBaselines": [],
+  "newSourceBaselines": [
+    "卫生健康标准网 · 发布通告"
+  ],
   "establishedSources": [
     "全国标准信息公共服务平台 · WS/T近期检索",
+    "卫生健康标准网 · 发布通告",
     "国家医保局 · 医保动态",
     "国家医保局 · 政策解读",
     "国家医保局 · 立项指南"
@@ -16,23 +19,23 @@
     {
       "name": "国家医保局 · 立项指南",
       "url": "https://www.nhsa.gov.cn/col/col201/index.html",
-      "state": "success",
-      "count": 41,
-      "detail": "仅检查当前目录响应"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：URLError；不能据此判断无更新"
     },
     {
       "name": "国家医保局 · 政策解读",
       "url": "https://www.nhsa.gov.cn/col/col202/index.html",
-      "state": "success",
-      "count": 19,
-      "detail": "仅检查当前目录响应"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：URLError；不能据此判断无更新"
     },
     {
       "name": "国家医保局 · 医保动态",
       "url": "https://www.nhsa.gov.cn/col/col14/index.html",
-      "state": "success",
-      "count": 45,
-      "detail": "仅检查当前目录响应"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：URLError；不能据此判断无更新"
     },
     {
       "name": "国家卫健委 · 卫生健康标准",
@@ -44,9 +47,9 @@
     {
       "name": "卫生健康标准网 · 发布通告",
       "url": "https://wsbz.nhc.gov.cn/wsbzw/BzcxAction.do?dispatch=bzgg&flag=7",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：HTTP 502；不能据此判断无更新"
+      "state": "success",
+      "count": 15,
+      "detail": "仅检查最新公告列表第一页；替代关系仍需打开正文核对"
     },
     {
       "name": "全国标准信息公共服务平台 · WS/T近期检索",
@@ -82,7 +85,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 886-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床检验结果互认的基本技术条件及质量指标",
@@ -91,7 +94,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 885-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床常用生化检验项目参考区间第9部分：血清C-反应蛋白、前白蛋白、转铁蛋白、β2-微球蛋白",
@@ -100,7 +103,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 404.9-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床常用免疫学检验项目参考区间第2部分：血清甲胎蛋白、癌胚抗原、糖链抗原19-9、糖链抗原15-3、糖链抗原125",
@@ -109,7 +112,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 645.2-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床常用免疫学检验项目参考区间第1部分：血清免疫球蛋白G、免疫球蛋白A、免疫球蛋白M、补体3、补体4",
@@ -118,7 +121,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 645.1-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床检验定量测定室内质量控制标准",
@@ -127,7 +130,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 641-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "临床微生物学检验标本的采集和转运标准",
@@ -136,7 +139,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 640-2026",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-02T11:26:41+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第12期）",
@@ -202,9 +205,130 @@
       "observedOn": "2026-11-01T23:15:37+08:00"
     }
   ],
-  "relevantItemsCheckedOn": "2026-11-01T23:15:37+08:00",
-  "announcementItems": [],
-  "announcementItemsCheckedOn": "",
+  "relevantItemsCheckedOn": "2026-11-02T11:26:41+08:00",
+  "announcementItems": [
+    {
+      "title": "国卫通〔2026〕10号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64cec1c00006.html",
+      "published": "2026-07-15",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕9号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64c3ad410004.html",
+      "published": "2026-07-13",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕8号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64c035c10001.html",
+      "published": "2026-07-13",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕7号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819eca60dd019efc57e0ca001d.html",
+      "published": "2026-06-25",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕6号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819b90d7ad019eaf47851000a6.html",
+      "published": "2026-06-10",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕5号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819b90d7ad019eaf3c04dd00a2.html",
+      "published": "2026-06-10",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕4号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/4/409002819b90d7ad019dada0d1970094.html",
+      "published": "2026-04-20",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕3号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/3/409002819b90d7ad019d243b7d520083.html",
+      "published": "2026-03-25",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕2号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/3/409002819b90d7ad019d04d301a60065.html",
+      "published": "2026-03-19",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2026〕1号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/2/409002819b90d7ad019c4baac9d3004c.html",
+      "published": "2026-02-11",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "公  告   2025年 第9号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/1/409002819b90d7ad019ba1a4a90b0046.html",
+      "published": "2026-01-09",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2025〕15号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/12/409002819a6c866b019b29d48a140006.html",
+      "published": "2025-12-17",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2025〕13号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/10/40900281991864f40199c6eddf0a0038.html",
+      "published": "2025-09-30",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2025〕12号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/9/40900281991864f40199610169c20022.html",
+      "published": "2025-09-19",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    },
+    {
+      "title": "国卫通〔2025〕11号",
+      "url": "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/9/40900281991864f4019960ce2149001c.html",
+      "published": "2025-09-19",
+      "directory": "卫生健康标准网 · 发布通告",
+      "code": "",
+      "effective": ""
+    }
+  ],
+  "announcementItemsCheckedOn": "2026-11-02T11:26:41+08:00",
   "versionCandidates": [],
   "versionCandidatesCompleteOn": "",
   "newItems": [],
@@ -240,6 +364,21 @@
     "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=593B8983A30E6191E06397BE0A0A1DD6",
     "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=593B8983A30F6191E06397BE0A0A1DD6",
     "https://std.samr.gov.cn/hb/search/stdHBDetailed?id=593B8983A3106191E06397BE0A0A1DD6",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/10/40900281991864f40199c6eddf0a0038.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/12/409002819a6c866b019b29d48a140006.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/9/40900281991864f4019960ce2149001c.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2025/9/40900281991864f40199610169c20022.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/1/409002819b90d7ad019ba1a4a90b0046.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/2/409002819b90d7ad019c4baac9d3004c.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/3/409002819b90d7ad019d04d301a60065.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/3/409002819b90d7ad019d243b7d520083.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/4/409002819b90d7ad019dada0d1970094.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819b90d7ad019eaf3c04dd00a2.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819b90d7ad019eaf47851000a6.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/6/409002819eca60dd019efc57e0ca001d.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64c035c10001.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64c3ad410004.html",
+    "https://wsbz.nhc.gov.cn/wsbzw/article/7/2026/7/409002819f64b671019f64cec1c00006.html",
     "https://www.nhsa.gov.cn/art/2024/10/26/art_14_14409.html",
     "https://www.nhsa.gov.cn/art/2024/11/12/art_14_14647.html",
     "https://www.nhsa.gov.cn/art/2024/11/14/art_14_14685.html",
