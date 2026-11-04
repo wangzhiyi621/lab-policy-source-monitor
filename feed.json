@@ -1,12 +1,10 @@
 {
-  "checkedOn": "2026-11-02T11:26:41+08:00",
+  "checkedOn": "2026-11-04T21:57:31+08:00",
   "mode": "github-scheduled",
-  "trigger": "scheduled",
+  "trigger": "manual",
   "baseline": false,
   "runSuccess": true,
-  "newSourceBaselines": [
-    "卫生健康标准网 · 发布通告"
-  ],
+  "newSourceBaselines": [],
   "establishedSources": [
     "全国标准信息公共服务平台 · WS/T近期检索",
     "卫生健康标准网 · 发布通告",
@@ -19,23 +17,23 @@
     {
       "name": "国家医保局 · 立项指南",
       "url": "https://www.nhsa.gov.cn/col/col201/index.html",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：URLError；不能据此判断无更新"
+      "state": "success",
+      "count": 41,
+      "detail": "仅检查当前目录响应"
     },
     {
       "name": "国家医保局 · 政策解读",
       "url": "https://www.nhsa.gov.cn/col/col202/index.html",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：URLError；不能据此判断无更新"
+      "state": "success",
+      "count": 19,
+      "detail": "仅检查当前目录响应"
     },
     {
       "name": "国家医保局 · 医保动态",
       "url": "https://www.nhsa.gov.cn/col/col14/index.html",
-      "state": "failed",
-      "count": 0,
-      "detail": "读取失败：URLError；不能据此判断无更新"
+      "state": "success",
+      "count": 45,
+      "detail": "仅检查当前目录响应"
     },
     {
       "name": "国家卫健委 · 卫生健康标准",
@@ -47,9 +45,9 @@
     {
       "name": "卫生健康标准网 · 发布通告",
       "url": "https://wsbz.nhc.gov.cn/wsbzw/BzcxAction.do?dispatch=bzgg&flag=7",
-      "state": "success",
-      "count": 15,
-      "detail": "仅检查最新公告列表第一页；替代关系仍需打开正文核对"
+      "state": "failed",
+      "count": 0,
+      "detail": "读取失败：HTTP 502；不能据此判断无更新"
     },
     {
       "name": "全国标准信息公共服务平台 · WS/T近期检索",
@@ -67,7 +65,7 @@
       "directory": "国家医保局 · 医保动态",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "各地密集发布立项指南对接落地映射关系",
@@ -76,7 +74,7 @@
       "directory": "国家医保局 · 立项指南",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床检验常用项目名称及代码",
@@ -85,7 +83,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 886-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床检验结果互认的基本技术条件及质量指标",
@@ -94,7 +92,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 885-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床常用生化检验项目参考区间第9部分：血清C-反应蛋白、前白蛋白、转铁蛋白、β2-微球蛋白",
@@ -103,7 +101,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 404.9-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床常用免疫学检验项目参考区间第2部分：血清甲胎蛋白、癌胚抗原、糖链抗原19-9、糖链抗原15-3、糖链抗原125",
@@ -112,7 +110,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 645.2-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床常用免疫学检验项目参考区间第1部分：血清免疫球蛋白G、免疫球蛋白A、免疫球蛋白M、补体3、补体4",
@@ -121,7 +119,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 645.1-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床检验定量测定室内质量控制标准",
@@ -130,7 +128,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 641-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "临床微生物学检验标本的采集和转运标准",
@@ -139,7 +137,7 @@
       "effective": "2026-11-01",
       "directory": "全国标准信息公共服务平台 · WS/T近期检索",
       "code": "WS/T 640-2026",
-      "observedOn": "2026-11-02T11:26:41+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第12期）",
@@ -148,7 +146,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第11期）",
@@ -157,7 +155,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第10期）",
@@ -166,7 +164,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第9期）",
@@ -175,7 +173,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第8期）",
@@ -184,7 +182,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第7期）",
@@ -193,7 +191,7 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     },
     {
       "title": "医疗服务价格项目立项指南解读辅导（第6期）",
@@ -202,10 +200,10 @@
       "directory": "国家医保局 · 政策解读",
       "code": "",
       "effective": "",
-      "observedOn": "2026-11-01T23:15:37+08:00"
+      "observedOn": "2026-11-04T21:57:31+08:00"
     }
   ],
-  "relevantItemsCheckedOn": "2026-11-02T11:26:41+08:00",
+  "relevantItemsCheckedOn": "2026-11-04T21:57:31+08:00",
   "announcementItems": [
     {
       "title": "国卫通〔2026〕10号",
@@ -461,6 +459,10 @@
     "https://www.nhsa.gov.cn/art/2026/10/7/art_14_22913.html",
     "https://www.nhsa.gov.cn/art/2026/10/8/art_14_22915.html",
     "https://www.nhsa.gov.cn/art/2026/10/9/art_14_23108.html",
+    "https://www.nhsa.gov.cn/art/2026/11/2/art_14_23282.html",
+    "https://www.nhsa.gov.cn/art/2026/11/2/art_14_23284.html",
+    "https://www.nhsa.gov.cn/art/2026/11/2/art_14_23286.html",
+    "https://www.nhsa.gov.cn/art/2026/11/3/art_14_23288.html",
     "https://www.nhsa.gov.cn/art/2026/2/11/art_14_19654.html",
     "https://www.nhsa.gov.cn/art/2026/2/11/art_14_19656.html",
     "https://www.nhsa.gov.cn/art/2026/2/26/art_202_19735.html",

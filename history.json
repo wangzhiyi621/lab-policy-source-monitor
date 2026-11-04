@@ -2,6 +2,45 @@
   "startedOn": "2026-11-01T20:53:04+08:00",
   "entries": [
     {
+      "checkedOn": "2026-11-04T21:57:31+08:00",
+      "trigger": "manual",
+      "result": "partial",
+      "newLinkCount": 0,
+      "versionCandidateCount": 0,
+      "sources": [
+        {
+          "name": "国家医保局 · 立项指南",
+          "state": "success",
+          "count": 41
+        },
+        {
+          "name": "国家医保局 · 政策解读",
+          "state": "success",
+          "count": 19
+        },
+        {
+          "name": "国家医保局 · 医保动态",
+          "state": "success",
+          "count": 45
+        },
+        {
+          "name": "国家卫健委 · 卫生健康标准",
+          "state": "failed",
+          "count": 0
+        },
+        {
+          "name": "卫生健康标准网 · 发布通告",
+          "state": "failed",
+          "count": 0
+        },
+        {
+          "name": "全国标准信息公共服务平台 · WS/T近期检索",
+          "state": "success",
+          "count": 30
+        }
+      ]
+    },
+    {
       "checkedOn": "2026-11-02T11:26:41+08:00",
       "trigger": "scheduled",
       "result": "partial",
