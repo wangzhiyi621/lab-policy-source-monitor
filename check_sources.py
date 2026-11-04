@@ -22,7 +22,7 @@ SOURCES = [
     ("国家医保局 · 立项指南", "https://www.nhsa.gov.cn/col/col201/index.html"),
     ("国家医保局 · 政策解读", "https://www.nhsa.gov.cn/col/col202/index.html"),
     ("国家医保局 · 医保动态", "https://www.nhsa.gov.cn/col/col14/index.html"),
-    ("国家卫健委 · 卫生健康标准", "https://www.nhc.gov.cn/wjw/s9492/wsbz.shtml"),
+    ("国家卫健委 · 卫生健康标准", "https://www.nhc.gov.cn/wjw/wsbzxx/wsbz.shtml"),
 ]
 SAMR_NAME = "全国标准信息公共服务平台 · WS/T近期检索"
 SAMR_SEARCH = "https://std.samr.gov.cn/search/stdPage?q=WS%2FT&tid="
@@ -34,6 +34,8 @@ LINK = re.compile(r'<a\s+href="([^"]+)"\s+title="([^"]+)"[^>]*>.*?</a>\s*<span>(
 SAMR_LINK = re.compile(r'<a\s+href="#"\s+tid="BV_HB"\s+pid="([0-9A-F]+)"[^>]*>\s*<span class="en-code">(.*?)</span>\s*&nbsp;&nbsp;\s*(.*?)</a>', re.S | re.I)
 SAMR_DATE = re.compile(r'<time class="post-date"[^>]*>(\d{4}-\d{2}-\d{2})</time>')
 NHC_ANNOUNCEMENT = re.compile(r'<a\s+href="([^"]+)"[^>]*class="bluelink"[^>]*>(.*?)</a>\s*</td>\s*<td[^>]*>(\d{4}-\d{2}-\d{2})</td>', re.S | re.I)
+NHC_STANDARD_ROW = re.compile(r'<tr\b[^>]*class="xx"[^>]*>(.*?)</tr>', re.S | re.I)
+NHC_STANDARD_LINK = re.compile(r'<a\b[^>]*href="([^"]+)"[^>]*title="([^"]+)"', re.S | re.I)
 def parse_records(page: str, directory: str, source_name: str) -> list[dict[str, str]]:
     records = []
     for block in RECORD.findall(page):
@@ -45,6 +47,27 @@ def parse_records(page: str, directory: str, source_name: str) -> list[dict[str,
         if urlparse(url).hostname not in ("www.nhsa.gov.cn", "nhsa.gov.cn"):
             continue
         records.append({"title": unescape(title).strip(), "url": url, "published": published, "directory": source_name, "code": "", "effective": ""})
+    return records
+
+
+def parse_nhc_standards(page: str, directory: str, source_name: str) -> list[dict[str, str]]:
+    """Read only rows in the NHC's public standard table, not site navigation."""
+    records = []
+    for row in NHC_STANDARD_ROW.findall(page):
+        cells = re.findall(r'<td\b[^>]*>(.*?)</td>', row, flags=re.S | re.I)
+        link = NHC_STANDARD_LINK.search(cells[2]) if len(cells) >= 5 else None
+        if not link:
+            continue
+        code = unescape(re.sub(r'<[^>]+>', '', cells[1])).strip()
+        published = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', cells[3])
+        effective = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', cells[4])
+        url = urljoin(directory, unescape(link.group(1)))
+        if not code or not published or urlparse(url).hostname not in ('www.nhc.gov.cn', 'nhc.gov.cn'):
+            continue
+        date = f'{int(published.group(1)):04d}-{int(published.group(2)):02d}-{int(published.group(3)):02d}'
+        effective_date = f'{int(effective.group(1)):04d}-{int(effective.group(2)):02d}-{int(effective.group(3)):02d}' if effective else ''
+        records.append({'title': unescape(link.group(2)).strip(), 'url': url, 'published': date,
+                        'directory': source_name, 'code': code, 'effective': effective_date})
     return records
 
 
@@ -148,10 +171,10 @@ def compile_snapshot(previous, known, established_sources, checked_on, trigger, 
     for name, url in SOURCES:
         try:
             page = source_pages[url].result()
-            records = parse_records(page, url, name) if "nhsa.gov.cn" in url else []
-            if "nhsa.gov.cn" in url and not records:
+            records = parse_records(page, url, name) if "nhsa.gov.cn" in url else parse_nhc_standards(page, url, name)
+            if not records:
                 raise ValueError("页面可访问，但目录条目无法解析")
-            statuses.append({"name": name, "url": url, "state": "success" if records else "unavailable", "count": len(records), "detail": "仅检查当前目录响应" if records else "目录格式尚未接入解析"})
+            statuses.append({"name": name, "url": url, "state": "success", "count": len(records), "detail": "仅检查当前目录响应"})
             for record in records:
                 all_records.setdefault(record["url"], record)
         except (HTTPError, URLError, ValueError, TimeoutError) as exc:
