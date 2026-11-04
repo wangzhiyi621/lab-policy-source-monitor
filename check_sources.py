@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from html import unescape
@@ -80,16 +81,30 @@ def parse_nhc_announcements(page: str) -> list[dict[str, str]]:
     return records
 
 
+def read_url(request: Request, encoding: str) -> str:
+    """Retry transient connection failures; access-control responses stay failed."""
+    for attempt in range(3):
+        try:
+            with urlopen(request, timeout=15) as response:
+                return response.read().decode(encoding, errors="replace")
+        except HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                raise
+        except (URLError, TimeoutError):
+            if attempt == 2:
+                raise
+        time.sleep(1 + attempt)
+    raise RuntimeError("unreachable retry state")
+
+
 def fetch(url: str) -> str:
     request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; LabPolicySourceCheck/1.0)", "Accept": "text/html"})
-    with urlopen(request, timeout=18) as response:
-        return response.read().decode("utf-8", errors="replace")
+    return read_url(request, "utf-8")
 
 
 def fetch_nhc_announcements() -> str:
     request = Request(NHC_ANNOUNCEMENTS, headers={"User-Agent": "Mozilla/5.0", "Accept": "text/html"})
-    with urlopen(request, timeout=18) as response:
-        return response.read().decode("gbk", errors="replace")
+    return read_url(request, "gbk")
 
 
 def write_results(snapshot: dict) -> None:
